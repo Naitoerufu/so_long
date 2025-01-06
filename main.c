@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/03 16:09:04 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:02:16 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 		ft_free_map(&test);
 	for (int i = 0; i < test.y_size; i++)
 		ft_printf("%s", test.map[i]);
+	ft_printf("\n\n");
+	ft_printf("\nres: %d\n", ft_map_path_check(test));
 	//ft_printf("x: %d\ny: %d\n", test.x_size, test.y_size);
 	ft_free_map(&test);
 }
