@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/06 17:02:22 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:12:38 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_map
 
 int			ft_form_check(char *path, t_map *map);
 int			ft_walls_check(char *path);
-int			ft_obj_check(char *path);
+int			ft_obj_check(t_map *to_check);
 int			ft_get_map(t_map *map, char *path);
 int			ft_map_path_check(t_map to_check);
 
