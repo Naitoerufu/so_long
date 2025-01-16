@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/16 15:43:27 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:00:09 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ typedef struct s_player
 	int			collectible_count;
 }				t_player;
 
-typedef struct s_images
+typedef struct s_textures
 {
 	t_img		*water[3];
-}				t_images;
+}				t_textures;
 
 typedef struct s_game
 {
@@ -48,7 +48,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	t_img		*img;
-	t_images	images;
+	t_textures	textures;
 }				t_game;
 
 int				ft_form_check(char *path, t_map *map);

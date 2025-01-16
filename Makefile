@@ -6,7 +6,7 @@
 #    By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/01/16 15:01:29 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/01/16 15:59:59 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = main.c \
 	srcs/map/map.c \
 	srcs/map/walls_and_form_check.c \
 	srcs/map/map_check.c \
-	srcs/images.c
+	srcs/graphics/textures.c
 	
 OFILES = $(SRCS:.c=.o)
 
