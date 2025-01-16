@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:28:26 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/03 16:14:15 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:37:39 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,14 @@ int	ft_get_map(t_map *map, char *path)
 		map->map[count] = get_next_line(fd);
 	}
 	return (1);
+}
+
+void	ft_free_map(t_map *to_free)
+{
+	int	count;
+
+	count = -1;
+	while (++count < to_free->y_size)
+		free(to_free->map[count]);
+	free(to_free->map);
 }

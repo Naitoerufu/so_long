@@ -6,34 +6,50 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/07 12:10:33 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:42:45 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_free_map(t_map *to_free)
+void	put_pixel(t_game *game, int x, int y, int color)
 {
-	int	count;
-
-	count = -1;
-	while (++count < to_free->y_size)
-		free(to_free->map[count]);
-	free(to_free->map);
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+		return ;
+	((int *)game->img->data)[x * WIDTH + y] = color;
 }
 
-int	main(int argc, char **argv)
+int	get_pixel(t_img *img, int x, int y)
 {
-	t_map test;
-	(void)argc;
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+		return (0);
+	return (((int *)img->data)[x * WIDTH + y]);
+}
 
-	ft_form_check(argv[1], &test);
-	if (!ft_get_map(&test, argv[1]))
-		ft_free_map(&test);
-	for (int i = 0; i < test.y_size; i++)
-		ft_printf("%s", test.map[i]);
-	ft_printf("\n\n");
-	ft_printf("\nres: %d\n", ft_map_path_check(test));
-	//ft_printf("x: %d\ny: %d\n", test.x_size, test.y_size);
-	ft_free_map(&test);
+int	loop_hook(t_game *game)
+{
+	(void)game;
+	for (int x = 10; x < 53; x++)
+		for (int y = 10; y < 53; y++)
+			put_pixel(game, x, y, 0xff0000);
+	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+	return (0);
+}
+
+int	main(void)
+{
+	t_game	game;
+
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "so_long");
+	game.img = mlx_new_image(game.mlx, WIDTH, HEIGHT);
+	load_images(&game);
+	mlx_hook(game.win, 17, 0, mlx_loop_end, game.mlx);
+	mlx_loop_hook(game.mlx, loop_hook, &game);
+	mlx_loop(game.mlx);
+	free_images(&game);
+	mlx_destroy_image(game.mlx, game.img);
+	mlx_destroy_window(game.mlx, game.win);
+	mlx_destroy_display(game.mlx);
+	free(game.mlx);
 }
