@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:25 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/17 11:51:25 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:20:32 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,21 @@ t_img	*load(t_game *game, char *path)
 
 static void	free_tab(t_game *game, t_img **tab, int size)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (i < size)
-	{
-		mlx_destroy_image(game->mlx, tab[i]);
-		i++;
-	}
+	count = -1;
+	while (++count < size)
+		mlx_destroy_image(game->mlx, tab[count]);
 }
 
-void	free_images(t_game *game)
+void	free_textures(t_game *game)
 {
 	free_tab(game, game->textures.water, 3);
+	free_tab(game, game->textures.collectible, 4);
+	free_tab(game, game->textures.player_idle, 12);
+	free_tab(game, game->textures.player_idle_left, 12);
+	free_tab(game, game->textures.player_run, 8);
+	free_tab(game, game->textures.player_run_left, 8);
 }
 
 void	load_textures(t_game *game)

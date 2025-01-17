@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/17 11:15:02 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:20:54 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(void)
 	
 	
 	
-	free_images(&game);
+	free_textures(&game);
 	mlx_destroy_image(game.mlx, game.img);
 	mlx_destroy_window(game.mlx, game.win);
 	mlx_destroy_display(game.mlx);

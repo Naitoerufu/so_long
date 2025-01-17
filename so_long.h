@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/17 13:10:40 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:20:45 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void			ft_free_map(t_map *to_free);
 t_img			*load(t_game *game, char *path);
 void			load_player_textures(t_game *game);
 void			load_textures(t_game *game);
-void			free_images(t_game *game);
+void			free_textures(t_game *game);
 
 #endif
