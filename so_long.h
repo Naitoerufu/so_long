@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/17 11:49:50 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:10:40 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ typedef struct s_textures
 	t_img		*water[3];
 	t_img		*collectible[4];
 	t_img		*player_idle[12];
+	t_img		*player_idle_left[12];
 	t_img		*player_run[8];
+	t_img		*player_run_left[8];
 }				t_textures;
 
 typedef struct s_game
