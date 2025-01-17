@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/16 15:42:45 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:15:02 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ int	get_pixel(t_img *img, int x, int y)
 
 int	loop_hook(t_game *game)
 {
-	(void)game;
-	for (int x = 10; x < 53; x++)
-		for (int y = 10; y < 53; y++)
-			put_pixel(game, x, y, 0xff0000);
-	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->textures.collectible[0], 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->textures.collectible[1], 32, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->textures.collectible[2], 64, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->textures.collectible[3], 96, 0);
 	return (0);
 }
 
@@ -41,12 +40,15 @@ int	main(void)
 	t_game	game;
 
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "so_long");
+	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, NAME);
 	game.img = mlx_new_image(game.mlx, WIDTH, HEIGHT);
-	load_images(&game);
+	load_textures(&game);
 	mlx_hook(game.win, 17, 0, mlx_loop_end, game.mlx);
 	mlx_loop_hook(game.mlx, loop_hook, &game);
 	mlx_loop(game.mlx);
+	
+	
+	
 	free_images(&game);
 	mlx_destroy_image(game.mlx, game.img);
 	mlx_destroy_window(game.mlx, game.win);

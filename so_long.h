@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/16 16:00:09 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:49:50 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # define WIDTH 800
 # define HEIGHT 600
+# define NAME "so_long"
 
 typedef struct s_map
 {
@@ -39,6 +40,9 @@ typedef struct s_player
 typedef struct s_textures
 {
 	t_img		*water[3];
+	t_img		*collectible[4];
+	t_img		*player_idle[12];
+	t_img		*player_run[8];
 }				t_textures;
 
 typedef struct s_game
@@ -58,7 +62,9 @@ int				ft_get_map(t_map *map, char *path);
 int				ft_map_path_check(t_map to_check);
 void			ft_free_map(t_map *to_free);
 
-void			load_images(t_game *game);
+t_img			*load(t_game *game, char *path);
+void			load_player_textures(t_game *game);
+void			load_textures(t_game *game);
 void			free_images(t_game *game);
 
 #endif
