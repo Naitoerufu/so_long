@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:44:11 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/07 12:11:57 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/18 14:59:59 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	ft_first_last_check(t_map to_check)
 
 int	ft_wall_check(t_map to_check)
 {
-	int count;
+	int	count;
 
 	if (!ft_first_last_check(to_check))
 		return (0);

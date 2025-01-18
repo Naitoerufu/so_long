@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/18 14:09:18 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/18 15:16:08 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	main(void)
 {
 	t_game	game;
 
-	ft_form_check("map", &game.map);
-	ft_get_map(&game.map, "map");
+	ft_printf("%d\n", ft_map(&game.map, "map"));
+	return (0);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, NAME);
 	game.img = mlx_new_image(game.mlx, WIDTH, HEIGHT);
@@ -47,7 +47,7 @@ int	main(void)
 	mlx_loop_hook(game.mlx, loop_hook, &game);
 	mlx_loop(game.mlx);
 	free_textures(&game);
-	ft_free_map(&game.map);
+	ft_free_map(&game.map, game.map.y_size);
 	mlx_destroy_image(game.mlx, game.img);
 	mlx_destroy_window(game.mlx, game.win);
 	mlx_destroy_display(game.mlx);
