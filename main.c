@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/18 15:16:08 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:53:36 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ static int	loop_hook(t_game *game)
 		x = 0;
 		while (x < game->map.x_size)
 		{
-			put_image(game, game->textures.grass[0], x * 32, y * 32);
+			put_image(game, game->textures.grass, x * 32, y * 32);
 			if (game->map.map[y][x] == 'C')
-				put_image(game, game->textures.collectible[0], x * 32, y * 32);
+				put_image(game, game->textures.collectible, x * 32, y * 32);
+			if (game->map.map[y][x] == '1')
+				put_image(game, game->textures.rock[1], x * 32, y * 32);
+			if (game->map.map[y][x] == 'P')
+				put_image(game, game->textures.player_idle[0], x * 32, y * 32);
 			x++;
 		}
 		y++;
@@ -37,8 +41,8 @@ int	main(void)
 {
 	t_game	game;
 
-	ft_printf("%d\n", ft_map(&game.map, "map"));
-	return (0);
+	if (!ft_map(&game.map, "maps/map.bep"))
+		return (0);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, NAME);
 	game.img = mlx_new_image(game.mlx, WIDTH, HEIGHT);

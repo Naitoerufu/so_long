@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/18 15:14:39 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:54:53 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "libs/mlx/mlx_int.h"
 # include <fcntl.h>
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 800
+# define HEIGHT 600
 # define NAME "so_long"
 
 typedef struct s_map
@@ -39,9 +39,10 @@ typedef struct s_player
 
 typedef struct s_textures
 {
-	t_img *grass[1];             // grass tile textures
+	t_img *rock[2];              // 2 different rock textures
+	t_img *grass;                // grass tile texture
 	t_img *water[3];             // water animation (TO CHANGE OR DELETE!!)
-	t_img *collectible[4];       // 4 different collectible textures
+	t_img *collectible;          // collectible's texture
 	t_img *player_idle[12];      // player's idle animation (R sided)
 	t_img *player_idle_left[12]; // player's idle animation (L sided)
 	t_img *player_run[8];        // player's run animatiopn (R sided)

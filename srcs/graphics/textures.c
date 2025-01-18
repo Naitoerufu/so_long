@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:25 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/18 12:05:06 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:43:58 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ static void	free_tab(t_game *game, t_img **tab, int size)
 
 void	free_textures(t_game *game)
 {
-	free_tab(game, game->textures.grass, 1);
+	free_tab(game, game->textures.rock, 2);
+	free(game->textures.grass);
 	free_tab(game, game->textures.water, 3);
-	free_tab(game, game->textures.collectible, 4);
+	free(game->textures.collectible);
 	free_tab(game, game->textures.player_idle, 12);
 	free_tab(game, game->textures.player_idle_left, 12);
 	free_tab(game, game->textures.player_run, 8);
@@ -42,13 +43,11 @@ void	free_textures(t_game *game)
 void	load_textures(t_game *game)
 {
 	load_player_textures(game);
+	game->textures.rock[0] = load(game, "textures/tiles/lil_rock.xpm");
+	game->textures.rock[1] = load(game, "textures/tiles/big_rock.xpm");
 	game->textures.water[0] = load(game, "textures/water/0.xpm");
 	game->textures.water[1] = load(game, "textures/water/1.xpm");
 	game->textures.water[2] = load(game, "textures/water/2.xpm");
-	game->textures.collectible[0] = load(game, "textures/collectible/0.xpm");
-	game->textures.collectible[1] = load(game, "textures/collectible/1.xpm");
-	game->textures.collectible[2] = load(game, "textures/collectible/2.xpm");
-	game->textures.collectible[3] = load(game, "textures/collectible/3.xpm");
-	
-	game->textures.grass[0] = load(game, "textures/tiles/grass.xpm");
+	game->textures.collectible = load(game, "textures/collectible/0.xpm");
+	game->textures.grass = load(game, "textures/tiles/grass.xpm");
 }
