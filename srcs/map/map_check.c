@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:29:52 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/07 13:38:31 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:58:06 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,35 +41,33 @@ int	ft_obj_check(t_map *to_check)
 	return (1);
 }
 
-static void	ft_near_pos_check(t_map to_check, char *access_map, int i,
-		int *flag)
+static void	ft_near_pos_check(t_map map, char *a_map, int i, int *flag)
 {
 	int	x;
 	int	y;
 
-	x = to_check.x_size;
-	y = to_check.y_size;
-	if (access_map[i])
+	x = map.x_size;
+	y = map.y_size;
+	if (a_map[i])
 	{
-		if (!access_map[i - 1] && to_check.map[(i - 1) / x][(i - 1) % x] != '1')
+		if (!a_map[i - 1] && map.map[(i - 1) / x][(i - 1) % x] != '1')
 		{
-			access_map[i - 1] = 1;
+			a_map[i - 1] = 1;
 			*flag = 1;
 		}
-		if (!access_map[i + 1] && to_check.map[(i + 1) / x][(i + 1) % x] != '1')
+		if (!a_map[i + 1] && map.map[(i + 1) / x][(i + 1) % x] != '1')
 		{
-			access_map[i + 1] = 1;
+			a_map[i + 1] = 1;
 			*flag = 1;
 		}
-		if (!access_map[i + x] && to_check.map[(i + x) / x][(i + x)
-			% to_check.x_size] != '1')
+		if (!a_map[i + x] && map.map[(i + x) / x][(i + x) % x] != '1')
 		{
-			access_map[i + x] = 1;
+			a_map[i + x] = 1;
 			*flag = 1;
 		}
-		if (!access_map[i - x] && to_check.map[(i - x) / x][(i - x) % x] != '1')
+		if (!a_map[i - x] && map.map[(i - x) / x][(i - x) % x] != '1')
 		{
-			access_map[i - x] = 1;
+			a_map[i - x] = 1;
 			*flag = 1;
 		}
 	}

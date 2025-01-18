@@ -6,11 +6,11 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:37:41 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/17 13:13:40 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/18 11:37:59 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
 static void	load_right_idle_textures(t_game *game)
 {
