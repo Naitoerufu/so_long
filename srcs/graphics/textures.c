@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:25 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/18 16:43:58 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/19 15:16:19 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	free_textures(t_game *game)
 void	load_textures(t_game *game)
 {
 	load_player_textures(game);
+	game->textures.hole = load(game, "textures/tiles/hole.xpm");
 	game->textures.rock[0] = load(game, "textures/tiles/lil_rock.xpm");
 	game->textures.rock[1] = load(game, "textures/tiles/big_rock.xpm");
 	game->textures.water[0] = load(game, "textures/water/0.xpm");

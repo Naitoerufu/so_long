@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/19 14:01:44 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/19 15:17:40 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	handle_input(int key, t_game *game)
 	return (0);
 }
 
-static int	loop_hook(t_game *game)
+static int	draw_map(t_game *game)
 {
 	int	x;
 	int	y;
@@ -54,6 +54,8 @@ static int	loop_hook(t_game *game)
 				put_image(game, game->textures.rock[1], x * 32, y * 32);
 			if (game->map.map[y][x] == 'P')
 				put_image(game, game->textures.player_idle[0], x * 32, y * 32 - 8);
+			if (game->map.map[y][x] == 'E')
+				put_image(game, game->textures.hole, x * 32, y * 32);
 			x++;
 		}
 		y++;
@@ -72,12 +74,13 @@ int	main(void)
 	game.player.collectible_count = 0;
 	game.player.moves = 0;
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, NAME);
-	game.img = mlx_new_image(game.mlx, WIDTH, HEIGHT);
+	game.win = mlx_new_window(game.mlx, 32 * game.map.x_size, 32 * game.map.y_size, NAME);
+	game.img = mlx_new_image(game.mlx, 32 * game.map.x_size, 32 * game.map.y_size);
 	load_textures(&game);
+	draw_map(&game);
 	mlx_hook(game.win, 17, 0, mlx_loop_end, game.mlx);
 	mlx_key_hook(game.win, handle_input, &game);
-	mlx_loop_hook(game.mlx, loop_hook, &game);
+	//mlx_loop_hook(game.mlx, loop_hook, &game);
 	mlx_loop(game.mlx);
 	free_textures(&game);
 	ft_free_map(&game.map, game.map.y_size);

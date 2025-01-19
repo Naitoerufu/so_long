@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/19 13:47:19 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/19 15:15:44 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_player
 
 typedef struct s_textures
 {
+	t_img *hole;
 	t_img *rock[2];              // 2 different rock textures
 	t_img *grass;                // grass tile texture
 	t_img *water[3];             // water animation (TO CHANGE OR DELETE!!)
