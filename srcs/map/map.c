@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:28:26 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/18 15:23:07 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/19 13:29:05 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	ft_map(t_map *map, char *path)
 		return (0);
 	if (!ft_get_map(map, path))
 		return (0);
-	map->collectible = 0;
 	if (!ft_wall_check(*map))
 		return (ft_free_map(map, map->y_size));
 	if (!ft_obj_check(map))

@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+         #
+#    By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/01/18 14:47:22 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/01/19 13:49:04 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -Wno-unused-but-set-variable
 
 NAME = so_long
 
@@ -21,7 +21,9 @@ SRCS = main.c \
 	srcs/map/map_path_check.c \
 	srcs/graphics/image.c \
 	srcs/graphics/textures.c \
-	srcs/graphics/player.c
+	srcs/graphics/player.c \
+	srcs/player/jsp.c \
+	srcs/player/controls.c
 	
 OFILES = $(SRCS:.c=.o)
 

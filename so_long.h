@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/18 16:54:53 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/19 13:47:19 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_player
 	int x;                 // player position on the x axis
 	int y;                 // player position on the y axis
 	int collectible_count; // quantity of objects collected by the player
+	int	moves;			// quantity of moves that player made
 }			t_player;
 
 typedef struct s_textures
@@ -86,4 +87,10 @@ void		load_textures(t_game *game);
 void		free_textures(t_game *game);
 // free all textures in the game
 
+// PLAYER PART:
+void    ft_define_coordinates(t_game *game); //finds the player's coordinates on the map and defines them
+void	ft_move_left(t_game *game); //moves the player left
+void	ft_move_right(t_game *game); //moves the player right
+void	ft_move_up(t_game *game); //moves the player up
+void	ft_move_down(t_game *game); //moves the player down
 #endif
