@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/19 15:17:40 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:43:08 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(void)
 	t_game	game;
 
 	ft_define(&game);
-	if (!ft_map(&game.map, "maps/map.bep"))
+	if (!ft_map(&game.map, "maps/map.ber"))
 		return (0);
 	ft_define_coordinates(&game);
 	game.player.collectible_count = 0;

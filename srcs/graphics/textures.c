@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:25 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/19 15:16:19 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:26:09 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	free_tab(t_game *game, t_img **tab, int size)
 
 void	free_textures(t_game *game)
 {
+	free(game->textures.hole);
 	free_tab(game, game->textures.rock, 2);
 	free(game->textures.grass);
 	free_tab(game, game->textures.water, 3);
