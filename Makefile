@@ -6,7 +6,7 @@
 #    By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/01/19 13:49:04 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/01/21 15:12:44 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ SRCS = main.c \
 	srcs/map/map_path_check.c \
 	srcs/graphics/image.c \
 	srcs/graphics/textures.c \
-	srcs/graphics/player.c \
-	srcs/player/jsp.c \
-	srcs/player/controls.c
+	srcs/player/coordinates.c \
+	srcs/player/controls.c \
+	srcs/utils.c
 	
 OFILES = $(SRCS:.c=.o)
 

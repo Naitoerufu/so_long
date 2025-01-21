@@ -6,13 +6,13 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/21 12:43:08 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:59:18 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_define(t_game *game)
+static void ft_define(t_game *game)
 {
 	game->map.collectible = 0;
 	game->map.x_size = 0;
@@ -21,6 +21,21 @@ void ft_define(t_game *game)
 	game->player.moves = 0;
 	game->player.x = 0;
 	game->player.y = 0;
+}
+
+int	handle_exit(t_game *game)
+{
+	int x;
+	int y;
+
+	x = game->player.x;
+	y = game->player.y;
+	if (game->map.map[y][x] == 'E' && game->map.collectible == game->player.collectible_count)
+	{
+		mlx_loop_end(game->mlx);
+		ft_printf("CONGRATULATIONS! THE LEVEL IS CLEARED!\n");
+	}
+	return (0);
 }
 
 int	handle_input(int key, t_game *game)
@@ -33,46 +48,21 @@ int	handle_input(int key, t_game *game)
 		ft_move_up(game);
 	if (key == 115)
 		ft_move_down(game);
+	if (key == 65307)
+		mlx_loop_end(game->mlx);
 	return (0);
 }
 
-static int	draw_map(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < game->map.y_size)
-	{
-		x = 0;
-		while (x < game->map.x_size)
-		{
-			put_image(game, game->textures.grass, x * 32, y * 32);
-			if (game->map.map[y][x] == 'C')
-				put_image(game, game->textures.collectible, x * 32, y * 32);
-			if (game->map.map[y][x] == '1')
-				put_image(game, game->textures.rock[1], x * 32, y * 32);
-			if (game->map.map[y][x] == 'P')
-				put_image(game, game->textures.player_idle[0], x * 32, y * 32 - 8);
-			if (game->map.map[y][x] == 'E')
-				put_image(game, game->textures.hole, x * 32, y * 32);
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}
-
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_game	game;
 
+	(void)ac;
 	ft_define(&game);
-	if (!ft_map(&game.map, "maps/map.ber"))
-		return (0);
+	if (!ft_map(&game.map, av[1]))
+		return (MAP_ERR);
 	ft_define_coordinates(&game);
-	game.player.collectible_count = 0;
-	game.player.moves = 0;
+	ft_printf("current moves: %d\n", game.player.moves);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 32 * game.map.x_size, 32 * game.map.y_size, NAME);
 	game.img = mlx_new_image(game.mlx, 32 * game.map.x_size, 32 * game.map.y_size);
@@ -80,7 +70,7 @@ int	main(void)
 	draw_map(&game);
 	mlx_hook(game.win, 17, 0, mlx_loop_end, game.mlx);
 	mlx_key_hook(game.win, handle_input, &game);
-	//mlx_loop_hook(game.mlx, loop_hook, &game);
+	mlx_loop_hook(game.mlx, handle_exit, &game);
 	mlx_loop(game.mlx);
 	free_textures(&game);
 	ft_free_map(&game.map, game.map.y_size);

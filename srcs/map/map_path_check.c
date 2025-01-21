@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_path_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:29:52 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/18 14:58:10 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:08:06 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_map_path_check(t_map map)
 
 	access_map = malloc(map.x_size * map.y_size);
 	if (!access_map)
-		return (0);
+		return (print_error(ALLOC_ERR));
 	i = -1;
 	while (++i < map.x_size * map.y_size)
 		access_map[i] = map.map[i / map.x_size][i % map.x_size] == 'P';
@@ -94,7 +94,7 @@ int	ft_map_path_check(t_map map)
 				/ map.x_size][i % map.x_size] == 'C') && !access_map[i])
 		{
 			free(access_map);
-			return (0);
+			return (print_error(PATH_ERR));
 		}
 	}
 	free(access_map);

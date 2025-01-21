@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:28:26 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/19 13:29:05 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:29:26 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ int	ft_get_map(t_map *map, char *path)
 	count = -1;
 	map->map = malloc(sizeof(char *) * map->y_size);
 	if (!map->map)
-		return (0);
+		return (print_error(ALLOC_ERR));
 	while (++count < map->y_size)
 	{
 		map->map[count] = malloc(map->x_size + 1);
 		if (!map->map[count])
 		{
 			ft_free_map(map, count);
-			return (0);
+			return (print_error(ALLOC_ERR));
 		}
 	}
 	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (print_error(FD_ERR));
 	count = -1;
 	while (++count < map->y_size)
-	{
 		map->map[count] = get_next_line(fd);
-	}
 	return (1);
 }
 
@@ -52,15 +52,51 @@ int	ft_free_map(t_map *to_free, int size)
 
 int	ft_map(t_map *map, char *path)
 {
-	if (ft_form_check(path, map) <= 0)
-		return (0);
-	if (!ft_get_map(map, path))
-		return (0);
-	if (!ft_wall_check(*map))
-		return (ft_free_map(map, map->y_size));
-	if (!ft_obj_check(map))
-		return (ft_free_map(map, map->y_size));
-	if (!ft_map_path_check(*map))
-		return (ft_free_map(map, map->y_size));
+	if (ft_form_check(path, map) < 0)
+		return (MAP_ERR);
+	if (ft_get_map(map, path) < 0)
+		return (MAP_ERR);
+	if (ft_wall_check(*map) < 0)
+	{
+		ft_free_map(map, map->y_size);
+		return (MAP_ERR);
+	}
+	if (ft_obj_check(map) < 0)
+	{
+		ft_free_map(map, map->y_size);
+		return (MAP_ERR);
+	}
+	if (ft_map_path_check(*map) < 0)
+	{
+		ft_free_map(map, map->y_size);
+		return (MAP_ERR);
+	}
 	return (1);
+}
+
+int	draw_map(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->map.y_size)
+	{
+		x = 0;
+		while (x < game->map.x_size)
+		{
+			put_image(game, game->textures.grass, x * 32, y * 32);
+			if (game->map.map[y][x] == 'C')
+				put_image(game, game->textures.collectible, x * 32, y * 32);
+			if (game->map.map[y][x] == '1')
+				put_image(game, game->textures.rock, x * 32, y * 32);
+			if (game->map.map[y][x] == 'P')
+				put_image(game, game->textures.player_idle, x * 32, y * 32 - 8);
+			if (game->map.map[y][x] == 'E')
+				put_image(game, game->textures.hole, x * 32, y * 32);
+			x++;
+		}
+		y++;
+	}
+	return (0);
 }

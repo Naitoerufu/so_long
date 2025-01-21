@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/19 15:15:44 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:30:04 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@
 # define WIDTH 800
 # define HEIGHT 600
 # define NAME "so_long"
+# define ALLOC_ERR -666
+# define FD_ERR -1
+# define FORM_ERR -2
+# define WALL_ERR -3
+# define INV_OBJ_ERR -4
+# define EXIT_ERR -5
+# define START_ERR -6
+# define COLLECT_ERR -7
+# define OBJ_ERR -8
+# define PATH_ERR -9
+# define MAP_ERR -10
 
 typedef struct s_map
 {
@@ -41,14 +52,11 @@ typedef struct s_player
 typedef struct s_textures
 {
 	t_img *hole;
-	t_img *rock[2];              // 2 different rock textures
+	t_img *rock;              // rock texture
 	t_img *grass;                // grass tile texture
-	t_img *water[3];             // water animation (TO CHANGE OR DELETE!!)
 	t_img *collectible;          // collectible's texture
-	t_img *player_idle[12];      // player's idle animation (R sided)
-	t_img *player_idle_left[12]; // player's idle animation (L sided)
-	t_img *player_run[8];        // player's run animatiopn (R sided)
-	t_img *player_run_left[8];   // player's run animation (L sided)
+	t_img *player_idle;      // player's idle texture (R sided)
+	t_img *player_idle_left; // player's idle texture (L sided)
 }			t_textures;
 
 typedef struct s_game
@@ -75,6 +83,7 @@ int			ft_map_path_check(t_map to_check);
 int	ft_free_map(t_map *to_free, int size); // frees the map
 int			ft_map(t_map *map, char *path);
 // checks the errors, allocates the map and frees it in the case of a problem
+int	draw_map(t_game *game); // puts the map on the screen
 
 // GRAPHIC PART:
 void		put_image(t_game *game, t_img *img, int x_pos, int y_pos);
@@ -94,4 +103,8 @@ void	ft_move_left(t_game *game); //moves the player left
 void	ft_move_right(t_game *game); //moves the player right
 void	ft_move_up(t_game *game); //moves the player up
 void	ft_move_down(t_game *game); //moves the player down
+
+// ERROR PART:
+int print_error(int err); // checks the error's code and print the corresponding error message
+
 #endif
