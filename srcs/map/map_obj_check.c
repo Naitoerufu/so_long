@@ -15,7 +15,7 @@
 static int	valid_obj_check(t_map *to_check)
 {
 	int	x;
-	int y;
+	int	y;
 
 	y = -1;
 	while (++y < to_check->y_size)
@@ -34,9 +34,9 @@ static int	valid_obj_check(t_map *to_check)
 
 static int	exit_check(t_map *to_check)
 {
-	int x;
-	int y;
-	int exit;
+	int	x;
+	int	y;
+	int	exit;
 
 	y = -1;
 	exit = 0;
@@ -56,9 +56,9 @@ static int	exit_check(t_map *to_check)
 
 static int	start_check(t_map *to_check)
 {
-	int x;
-	int y;
-	int start;
+	int	x;
+	int	y;
+	int	start;
 
 	y = -1;
 	start = 0;
@@ -78,8 +78,8 @@ static int	start_check(t_map *to_check)
 
 static int	collectible_check(t_map *to_check)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = -1;
 	while (++y < to_check->y_size)

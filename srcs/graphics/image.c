@@ -12,7 +12,7 @@
 
 #include "../../so_long.h"
 
-//static void	put_pixel(t_game *game, int x, int y, int color)
+// static void	put_pixel(t_game *game, int x, int y, int color)
 //{
 //	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 //		return ;

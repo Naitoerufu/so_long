@@ -6,13 +6,13 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/22 16:36:53 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:20:06 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void ft_define(t_game *game)
+static void	ft_define(t_game *game)
 {
 	game->win = NULL;
 	game->map.collectible = 0;
@@ -26,12 +26,13 @@ static void ft_define(t_game *game)
 
 int	handle_exit(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = game->player.x;
 	y = game->player.y;
-	if (game->map.map[y][x] == 'E' && game->map.collectible == game->player.collectible_count)
+	if (game->map.map[y][x] == 'E'
+		&& game->map.collectible == game->player.collectible_count)
 	{
 		mlx_loop_end(game->mlx);
 		ft_printf("CONGRATULATIONS! THE LEVEL IS CLEARED!\n");
@@ -60,13 +61,15 @@ int	main(int ac, char **av)
 
 	(void)ac;
 	ft_define(&game);
-	if (!ft_map(&game.map, av[1]))
+	if (ft_map(&game.map, av[1]) < 0)
 		return (MAP_ERR);
 	ft_define_coordinates(&game);
 	ft_printf("current moves: %d\n", game.player.moves);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 32 * game.map.x_size, 32 * game.map.y_size, NAME);
-	game.img = mlx_new_image(game.mlx, 32 * game.map.x_size, 32 * game.map.y_size);
+	game.win = mlx_new_window(game.mlx, 32 * game.map.x_size, 32
+			* game.map.y_size, NAME);
+	game.img = mlx_new_image(game.mlx, 32 * game.map.x_size, 32
+			* game.map.y_size);
 	load_textures(&game);
 	draw_map(&game);
 	mlx_hook(game.win, 17, 0, mlx_loop_end, game.mlx);

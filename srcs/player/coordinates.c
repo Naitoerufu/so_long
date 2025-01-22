@@ -12,22 +12,22 @@
 
 #include "../../so_long.h"
 
-void    ft_define_coordinates(t_game *game)
+void	ft_define_coordinates(t_game *game)
 {
-    int x;
-    int y;
+	int	x;
+	int	y;
 
-    y = -1;
-    while (++y < game->map.y_size)
-    {
-        x = -1;
-        while (++x < game->map.x_size)
-        {
-            if (game->map.map[y][x] == 'P')
-            {
-                game->player.x = x;
-                game->player.y = y;
-            }
-        }
-    }
+	y = -1;
+	while (++y < game->map.y_size)
+	{
+		x = -1;
+		while (++x < game->map.x_size)
+		{
+			if (game->map.map[y][x] == 'P')
+			{
+				game->player.x = x;
+				game->player.y = y;
+			}
+		}
+	}
 }

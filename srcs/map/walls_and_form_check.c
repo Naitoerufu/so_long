@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:44:11 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/21 15:06:26 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:33:28 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ static int	ft_free_and_close(char *line, int fd)
 	free(line);
 	close(fd);
 	return (0);
+}
+
+static int	free_close_error(char *line, int fd)
+{
+	ft_free_and_close(line, fd);
+	return (print_error(FORM_ERR));
 }
 
 int	ft_form_check(char *path, t_map *map)
@@ -31,17 +37,15 @@ int	ft_form_check(char *path, t_map *map)
 	line = get_next_line(fd);
 	len = ft_strlen(line);
 	map->x_size = len - 1;
-	map->y_size = 0;
-	while (line)
+	while (line && *line)
 	{
 		free(line);
 		line = get_next_line(fd);
 		if (line && (ft_strlen(line) != len))
+		{
 			if (line[ft_strlen(line) - 1] == '\n')
-			{
-				ft_free_and_close(line, fd);
-				return (print_error(FORM_ERR));
-			}
+				return (free_close_error(line, fd));
+		}
 		map->y_size++;
 	}
 	ft_free_and_close(line, fd);
