@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:00:22 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/21 15:30:04 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:25:04 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_game
 	t_map map;           // see map struct comment
 	t_player player;     // see player struct comment
 	void *mlx;           // mlx pointer
-	void *win;           // win pointer (also for mlx)
+	void *win;           // window pointer (also for mlx)
 	t_textures textures; // see textures struct comment
 }			t_game;
 

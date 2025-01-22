@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:25 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/21 13:36:55 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:18:20 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static void	free_tab(t_game *game, t_img **tab, int size)
 */
 void	free_textures(t_game *game)
 {
-	free(game->textures.hole);
-	free(game->textures.rock);
-	free(game->textures.grass);
-	free(game->textures.collectible);
-	free(game->textures.player_idle);
-	free(game->textures.player_idle_left);
+	mlx_destroy_image(game->mlx, game->textures.hole);
+	mlx_destroy_image(game->mlx, game->textures.rock);
+	mlx_destroy_image(game->mlx, game->textures.grass);
+	mlx_destroy_image(game->mlx, game->textures.collectible);
+	mlx_destroy_image(game->mlx, game->textures.player_idle);
+	mlx_destroy_image(game->mlx, game->textures.player_idle_left);
 }
 
 void	load_textures(t_game *game)

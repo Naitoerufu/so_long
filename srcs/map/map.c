@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:28:26 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/21 15:29:26 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:00:36 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,18 @@ int	ft_get_map(t_map *map, char *path)
 	map->map = malloc(sizeof(char *) * map->y_size);
 	if (!map->map)
 		return (print_error(ALLOC_ERR));
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (print_error(FD_ERR));
 	while (++count < map->y_size)
 	{
-		map->map[count] = malloc(map->x_size + 1);
+		map->map[count] = get_next_line(fd);
 		if (!map->map[count])
 		{
 			ft_free_map(map, count);
 			return (print_error(ALLOC_ERR));
 		}
 	}
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		return (print_error(FD_ERR));
-	count = -1;
-	while (++count < map->y_size)
-		map->map[count] = get_next_line(fd);
 	return (1);
 }
 

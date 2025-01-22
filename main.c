@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:59:27 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/01/21 15:59:18 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:36:53 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void ft_define(t_game *game)
 {
+	game->win = NULL;
 	game->map.collectible = 0;
 	game->map.x_size = 0;
 	game->map.y_size = 0;
